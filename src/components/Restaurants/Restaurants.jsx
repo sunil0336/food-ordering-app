@@ -1,9 +1,10 @@
-import React from 'react'
-import restaurantData from '../../data/restaurants';
+import React, { useEffect } from 'react'
+// import restaurantData from '../../data/restaurants';
 
 function Restaurants() {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [toprated, setTopRated] = React.useState(false);
+  const [restaurantData, setRestaurantData] = React.useState([]);
 
 
     const filteredRestaurants = restaurantData.filter(restaurant =>
@@ -17,9 +18,24 @@ function Restaurants() {
     setTopRated(!toprated);
   }
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/restaurants');
+      const data = await response.json();
+      setRestaurantData(data);
+      console.log('Fetched data:', data);
+      
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
-        <h1>Data</h1>
         <div className="flex justify-center my-4">
             <input
                 type="text"
