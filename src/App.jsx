@@ -6,9 +6,6 @@ export default function App() {
     <div>
       <Header />
       <Restaurants />
-      <h1 className="text-3xl font-bold">
-        Hello world!
-      </h1>
     </div>
   )
 }
