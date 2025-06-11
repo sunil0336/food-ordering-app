@@ -1,15 +1,23 @@
+import React from "react";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs";
+import Body from "./components/Body";
 import Header from "./components/Header";
-import Restaurants from "./components/Restaurants/Restaurants";
+import Error from "./components/Error";
 
 export default function App() {
   return (
-    <div>
-      <Header />
-      <Restaurants />
-      <About />
-      <ContactUs />
-    </div>
+    <BrowserRouter>
+    <Header />
+        <Routes>
+          <Route path="/" element={<Body />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/cart" element={<Error />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+        <Outlet />
+    </BrowserRouter>
   )
 }
