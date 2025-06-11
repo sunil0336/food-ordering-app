@@ -8,7 +8,7 @@ function Header() {
                 <div className="text-lg font-bold">Food Ordering</div>
                 <ul className="flex space-x-4">
                     <li><a href="#" className=" hover:text-gray-400">Home</a></li>
-                    <li><a href="#" className=" hover:text-gray-400">About</a></li>
+                    <li><a href="#about" className=" hover:text-gray-400">About</a></li>
                     <li><a href="#" className=" hover:text-gray-400">Contact</a></li>
                     <li><a href="#" className=" hover:text-gray-400">Cart</a></li>
                 </ul>
