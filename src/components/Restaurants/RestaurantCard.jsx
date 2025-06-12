@@ -1,10 +1,18 @@
 import React from 'react';
 import { FaStar, FaStopwatch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 
 const RestaurantCard = ({ restaurant }) => {
+  const navigate = useNavigate(); 
+  const handNavigate = (ID) => {
+    console.log(`Navigating to restaurant with ID: ${ID}`);
+    navigate(`/restaurants/${ID}`);
+  };
   return (
     <div
       key={restaurant.id}
+      onClick={() => handNavigate(restaurant.id)}
       className="relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2"
     >
       <img

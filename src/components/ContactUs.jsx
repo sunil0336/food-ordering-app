@@ -26,60 +26,65 @@ function ContactUs() {
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold text-gray-800 mb-4 text-center">Contact Us</h1>
-      <p className="mb-6 text-gray-600 text-center">We would love to hear from you! Please fill out the form below to get in touch with us.</p>
-      
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center py-12 px-4">
+      <div className="max-w-lg w-full bg-white rounded-3xl shadow-2xl p-10 border-4 border-purple-200">
+        <h1 className="text-4xl font-extrabold text-purple-700 mb-2 text-center">Contact Us</h1>
+        <p className="mb-8 text-gray-600 text-center">
+          We would love to hear from you! Fill out the form below and our team will get back to you soon.
+        </p>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-semibold text-purple-700 mb-2" htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="w-full p-3 border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-purple-700 mb-2" htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className="w-full p-3 border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
+              placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-purple-700 mb-2" htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              className="w-full p-3 border-2 border-purple-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
+              rows="4"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-xl shadow hover:from-purple-600 hover:to-pink-600 transition"
+          >
+            Send Message
+          </button>
+        </form>
+        <div className="mt-8 text-center">
+          <span className="text-gray-400 text-xs">
+            &copy; {new Date().getFullYear()} FoodieExpress. All rights reserved.
+          </span>
         </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150 ease-in-out"
-            rows="4"
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
-        
-        <button
-          type="submit"
-          className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 ease-in-out"
-        >
-          Send Message
-        </button>
-      </form>
+      </div>
     </div>
   );
 }
