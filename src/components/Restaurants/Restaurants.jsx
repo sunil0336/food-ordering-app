@@ -2,36 +2,12 @@ import React, { useEffect } from 'react'
 import ShimmerCard from '../Simmer/SimmerCard';
 import { FaStar , FaStopwatch } from 'react-icons/fa';
 import RestaurantCard from './RestaurantCard';
+import useRestaurant from '../../Hooks/useRestaurant';
 
 function Restaurants() {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [toprated, setTopRated] = React.useState(false);
-  const [restaurantData, setRestaurantData] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/restaurants');
-      const data = await response.json();
-      setRestaurantData(data);
-      console.log('Fetched data:', data);
-
-      setTimeout(() => {
-        setLoading(false);
-      }, 1500);
-
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setTimeout(() => {
-        setLoading(false);
-      }, 1500);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+  const { restaurantData, loading } = useRestaurant();
 
   const filteredRestaurants = restaurantData.filter(restaurant =>
     restaurant.resName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -43,8 +19,6 @@ function Restaurants() {
   const handleShowTopRated = () => {
     setTopRated(!toprated);
   }
-
-
 
   return (
     <>

@@ -1,23 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
+import useRestaurantMenu from '../../Hooks/useRestaurantMenu';
 
 function RestaurantMenu() {
     const { id } = useParams();
-    const [restaurant, setRestaurant] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`http://localhost:3001/restaurants/${id}`);
-                const data = await response.json();
-                setRestaurant(data);
-                console.log('Fetched Menu:', data);
-            } catch (error) {
-                console.error('Error fetching restaurant:', error);
-            }
-        };
-        fetchData();
-    }, [id]);
+    const {restaurant} = useRestaurantMenu(id);
 
     const handleAddToCart = (item) => {
         // Replace this with your cart logic
