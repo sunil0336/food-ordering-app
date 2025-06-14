@@ -81,7 +81,7 @@ function ContactUs() {
         </form>
         <div className="mt-8 text-center">
           <span className="text-gray-400 text-xs">
-            &copy; {new Date().getFullYear()} FoodieExpress. All rights reserved.
+            &copy; {new Date().getFullYear()} Food Ordering. All rights reserved.
           </span>
         </div>
       </div>
