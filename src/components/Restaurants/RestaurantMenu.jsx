@@ -1,14 +1,24 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import useRestaurantMenu from '../../Hooks/useRestaurantMenu';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../slice/cartSlice';
+import { store } from '../../store/store';
 
 function RestaurantMenu() {
     const { id } = useParams();
     const {restaurant} = useRestaurantMenu(id);
+    const dispatch = useDispatch();
 
     const handleAddToCart = (item) => {
         // Replace this with your cart logic
         alert(`Added ${item.name} to cart!`);
+        dispatch(addToCart(item));
+
+        setTimeout(() => {
+            console.log('redux state after dispatch:', store.getState().cart.items);
+        }, 500);
+
     };
 
     if (!restaurant) {
