@@ -26,10 +26,10 @@ function ContactUs() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center py-12 px-4">
-      <div className="max-w-lg w-full bg-white rounded-3xl shadow-2xl p-10 border-4 border-purple-200">
+    <div className="h-auto bg-gray-50 flex  justify-center py-6 px-4">
+      <div className="max-w-lg w-full bg-white rounded-3xl shadow-2xl p-10 border-2 border-garay-100">
         <h1 className="text-4xl font-extrabold text-purple-700 mb-2 text-center">Contact Us</h1>
-        <p className="mb-8 text-gray-600 text-center">
+        <p className="mb-6 text-gray-600 text-center">
           We would love to hear from you! Fill out the form below and our team will get back to you soon.
         </p>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -79,7 +79,7 @@ function ContactUs() {
             Send Message
           </button>
         </form>
-        <div className="mt-8 text-center">
+        <div className="mt-6 text-center">
           <span className="text-gray-400 text-xs">
             &copy; {new Date().getFullYear()} Food Ordering. All rights reserved.
           </span>

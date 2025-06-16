@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import ShimmerCard from '../Simmer/SimmerCard';
-import { FaStar , FaStopwatch } from 'react-icons/fa';
+import { FaStar, FaStopwatch } from 'react-icons/fa';
 import RestaurantCard from './RestaurantCard';
 import useRestaurant from '../../Hooks/useRestaurant';
 
@@ -22,7 +22,7 @@ function Restaurants() {
 
   return (
     <>
-      <div className="flex justify-center my-4">
+      <div className="flex flex-col sm:flex-row items-center justify-center my-4 gap-2 sm:gap-0">
         <input
           type="text"
           placeholder="Search for restaurants..."
@@ -31,27 +31,30 @@ function Restaurants() {
             setSearchTerm(e.target.value)
             setTopRated(false);
           }}
-          className="border border-gray-300 rounded-lg p-2 w-full max-w-md"
+          className="border border-gray-300 rounded-lg p-2 w-full max-w-xs sm:max-w-md"
         />
-        <button
-          onClick={handleShowTopRated}
-          className={`ml-2 px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 ${toprated ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700 '}`}
-        >
-          {toprated ? 'Show All' : 'Show Top Rated'}
-        </button>
-        <button
-          onClick={() => {
-            setSearchTerm('');
-            setTopRated(false);
-          }}
-          className="ml-2 px-4 py-2 bg-red-200 hover:bg-red-400 hover:scale-105 transition-all duration-300 text-gray-700 rounded-lg"
-        >
-          Clear Search
-        </button>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleShowTopRated}
+            className={`sm:ml-2 mt-2 sm:mt-0 px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 ${toprated ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700 '}`}
+          >
+            {toprated ? 'Show All' : 'Show Top Rated'}
+          </button>
+          <button
+            onClick={() => {
+              setSearchTerm('');
+              setTopRated(false);
+            }}
+            className="sm:ml-2 mt-2 sm:mt-0 px-4 py-2 bg-red-200 hover:bg-red-400 hover:scale-105 transition-all duration-300 text-gray-700 rounded-lg"
+          >
+            Clear Search
+          </button>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 m-8">
         {loading ? (
-          Array.from({length: 10}).map((_, index) => (
+          Array.from({ length: 10 }).map((_, index) => (
 
             <ShimmerCard key={index} />
 

@@ -4,6 +4,7 @@ import useRestaurantMenu from '../../Hooks/useRestaurantMenu';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../slice/cartSlice';
 import { store } from '../../store/store';
+import { toast, ToastContainer } from 'react-toastify';
 
 function RestaurantMenu() {
     const { id } = useParams();
@@ -12,8 +13,18 @@ function RestaurantMenu() {
 
     const handleAddToCart = (item) => {
         // Replace this with your cart logic
-        alert(`Added ${item.name} to cart!`);
         dispatch(addToCart(item));
+        toast.success(`${item.name} Added to cart!`, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            // transition: Bounce,
+        });
 
         setTimeout(() => {
             console.log('redux state after dispatch:', store.getState().cart.items);
@@ -27,6 +38,7 @@ function RestaurantMenu() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-100 to-gray-100 py-8">
+            <ToastContainer />
             <div className="max-w-screen-xl mx-auto bg-white shadow-2xl rounded-2xl p-8">
                 <div className="flex flex-col md:flex-row items-center mb-8">
                     <img
