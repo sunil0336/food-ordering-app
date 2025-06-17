@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearCart } from "../slice/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.qty , 0);
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price * (item.qty || 1), 0);
@@ -16,7 +18,31 @@ function Cart() {
     console.log("Cart items updated:", cartItems);
   }, [cartItems]);
 
-  // Toast for remove
+  // checkout function
+  const handleCheckout = () => {
+    if(!isAuthenticated) {
+      navigate("/login");
+      return;
+    }else{
+      dispatch(clearCart());
+      toast.success("Order Placed successful! Thank you.", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            // transition: Bounce,
+        });
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  };
+
+
   const handleRemove = (id , name) => {
     dispatch({ type: 'cart/removeFromCart', payload: { id } });
     toast.info(`${name} removed from cart`, {
@@ -116,7 +142,9 @@ function Cart() {
               >
                 Clear Cart
               </button>
-              <button className="w-full md:w-auto px-6 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600 transition">
+              <button 
+                onClick={handleCheckout}
+                className="w-full md:w-auto px-6 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600 transition">
                 Checkout
               </button>
             </div>

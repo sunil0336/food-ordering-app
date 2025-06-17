@@ -1,8 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; 
+import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout } from '../slice/authSlice';
+import { FaShoppingCart } from 'react-icons/fa';
 
 function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const cartItems = useSelector((state) => state.cart.items);
+  // Use qty/quantity fallback for total items
+  const totalItems = cartItems.reduce((total, item) => total + (item.qty || item.quantity || 1), 0);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
 
   const activeLinkClass = ({ isActive }) =>
     isActive
@@ -32,7 +40,7 @@ function Header() {
           </button>
         </div>
 
-        <ul className="hidden md:flex space-x-2 font-bold"> 
+        <ul className="hidden md:flex space-x-2 font-bold items-center">
           <li>
             <NavLink to="/" className={activeLinkClass}>Home</NavLink>
           </li>
@@ -43,8 +51,36 @@ function Header() {
             <NavLink to="/contact" className={activeLinkClass}>Contact Us</NavLink>
           </li>
           <li>
-            <NavLink to="/cart" className={activeLinkClass}>Cart</NavLink>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                `${activeLinkClass({ isActive })} relative flex items-center`
+              }
+            >
+              <FaShoppingCart className="text-xl" />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-1.5 py-0.5 text-xs font-bold shadow">
+                  {totalItems}
+                </span>
+              )}
+            </NavLink>
           </li>
+          
+          {isAuthenticated ? (
+            <li>
+              <button
+                onClick={() => {
+                  dispatch(logout());
+                }}
+              >
+                Logout
+              </button>
+            </li>
+          ) : (
+            <li>
+              <NavLink to="/login" className={activeLinkClass}>Login</NavLink>
+            </li>
+          )}
         </ul>
       </div>
 
@@ -61,8 +97,37 @@ function Header() {
               <NavLink to="/contact" className={activeLinkClass} onClick={() => setMenuOpen(false)}>Contact Us</NavLink>
             </li>
             <li>
-              <NavLink to="/cart" className={activeLinkClass} onClick={() => setMenuOpen(false)}>Cart</NavLink>
+              <NavLink
+                to="/cart"
+                className={({ isActive }) =>
+                  `${activeLinkClass({ isActive })} relative flex items-center`
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaShoppingCart className="text-xl" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-1.5 py-0.5 text-xs font-bold shadow">
+                    {totalItems}
+                  </span>
+                )}
+              </NavLink>
             </li>
+            {isAuthenticated ? (
+              <li>
+                <button
+                  onClick={() => {
+                    dispatch(logout());
+                    setMenuOpen(false);
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li>
+                <NavLink to="/login" className={activeLinkClass} onClick={() => setMenuOpen(false)}>Login</NavLink>
+              </li>
+            )}
           </ul>
         </div>
       )}
