@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import Spinner from "./components/Spinner";
+import Login from "./components/Restaurants/Login";
 
 // lazy loading
 const About = lazy(() => import("./components/About"));
@@ -24,7 +25,7 @@ export default function App() {
           <Route path="/restaurants/:id" element={<RestaurantMenu />} />
           <Route path="*" element={<Error />} />
 
-          {/* <Route path="/test" element={<Spinner />} /> */}
+          <Route path="/test" element={<Login />} />
 
         </Routes>
       </Suspense>
