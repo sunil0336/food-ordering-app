@@ -1,12 +1,101 @@
-# React + Vite
+# 🍔 Swiggy Clone - Food Ordering App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Swiggy-inspired food ordering app built with React 18 and Parcel as the bundler, designed for fast performance and a seamless user experience.
 
-Currently, two official plugins are available:
+🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ Built with React 18 – Leverages concurrent rendering for better performance.
 
-## Expanding the ESLint configuration
+✅ Super-fast bundling with Parcel – Zero-config, lightning-fast builds.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✅ Swiggy-like UI & UX – Clean, intuitive, and user-friendly interface.
+
+✅ Dynamic Restaurant Listings – Fetch and display real-time restaurant data.
+
+✅ Smooth Cart Experience – Add, update, and remove items seamlessly.
+
+✅ Optimized Performance – Efficient state management and component rendering.
+
+🛠️ Tech Stack
+
+    Frontend: React 18, React Hooks
+    Bundler: Parcel
+    State Management: Redux Toolkit 
+    Routing: React Router
+    Styling: CSS 
+    Toast Notifications
+    Font Awesome Icons
+
+# 🔧 Installation & Setup
+
+- Clone the repository
+
+```sh
+git clone https://github.com/sunil0336/food-ordering-app
+cd food-ordering-app
+```
+
+- Install dependencies
+
+```sh
+ npm install
+```
+
+- Setup API
+
+```sh
+json-server --watch src/data/db.json --port 3001 (run the endpoint separetly)
+
+http://localhost:3001/restaurants - API can be accessed here
+```
+- Run the development server
+
+```sh
+npm start
+```
+
+# Parcel Features
+- Dev Build
+- Local Server
+- HMR
+- File Watching Algo
+- Caching - Builder faster builds
+- Image optimization
+- Minification
+- Bundling
+- Compressing
+- Consistent Hashing
+- Code Splitting
+- Differential Bundling
+- Diagnostic
+- Error Handling
+- Also allows to host in HTTPs
+- Tree Shaking
+- Different Dev & Prod bundles
+
+# Json server settings
+- npm install -g json-server
+- create db.json file
+- json-server --watch src/data/db.json --port 3001 (run the endpoint separetly)
+- http://localhost:3001/restaurants - can be accessed here
+
+# Parcel clean
+- rm -rf .parcel-cache
+
+# Batch-8 Routing
+- npm i react-router-dom . Use version 6+. 7+ is unstable at the time of recording.
+
+# Redux
+- Clicking on Add button will dispatch an action and call reducer.
+- Which updates the slice of redux store.
+- Cart component is subscribed to the store using a selector.
+- Since the component is subscribed to store using a selector, cart will automoatically updated.
+
+# Steps
+- Install @redux/toolkit & react-redux
+- Build our store
+- Connect our atore to our app
+- Slice (CartSlice)
+- dispatch an action
+- selector
+- npm install redux-persist
