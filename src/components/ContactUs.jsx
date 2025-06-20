@@ -26,7 +26,9 @@ function ContactUs() {
   };
 
   return (
-    <div className="h-auto bg-gray-50 flex  justify-center py-6 px-4">
+    <div className="bg-gray-50 flex  justify-center py-6 px-4"
+    style={{ minHeight: 'calc(100vh - 68px)' }}
+    >
       <div className="max-w-lg w-full bg-white rounded-3xl shadow-2xl p-10 border-2 border-garay-100">
         <h1 className="text-4xl font-extrabold text-purple-700 mb-2 text-center">Contact Us</h1>
         <p className="mb-6 text-gray-600 text-center">

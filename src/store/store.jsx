@@ -4,14 +4,17 @@ import authReducer from '../slice/authSlice';
 import cartReducer from '../slice/cartSlice';
 import { configureStore } from '@reduxjs/toolkit';
 
-const persistConfig = {
-    key: 'cart', //key under which data will be stored in localStorage
-    storage // use
+const cartPersistConfig = {
+    key: 'cart',
+    storage
+};
+const authPersistConfig = {
+    key: 'auth',
+    storage
 };
 
-//wrap cart reducer with persistReducer 
-const persistCartReducer = persistReducer(persistConfig, cartReducer);
-const persistAuthReducer = persistReducer(persistConfig, authReducer);
+const persistCartReducer = persistReducer(cartPersistConfig, cartReducer);
+const persistAuthReducer = persistReducer(authPersistConfig, authReducer);
 
 export const store = configureStore({
     reducer: {
@@ -21,7 +24,6 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
-                // Ignore these action types for serializable check
                 ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE']
             }
         })

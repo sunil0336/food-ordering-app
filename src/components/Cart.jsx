@@ -65,7 +65,10 @@ function Cart() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-10 px-2">
+    <div
+      className="flex items-center justify-center bg-gray-50 py-10 px-2"
+      style={{ minHeight: 'calc(100vh - 68px)' }}
+    >
       <ToastContainer />
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg p-8">
         <h1 className="text-2xl font-bold text-gray-800 mb-6 border-b pb-3">
