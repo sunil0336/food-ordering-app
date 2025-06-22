@@ -1,8 +1,11 @@
 import React from "react";
 
 const Spinner = () => (
-  <div className="flex items-center justify-center min-h-[200px]">
-    <div className="relative w-20 h-20">
+  <div className="relative w-full h-screen flex items-center justify-center">
+    {/* Overlay for blur and dark */}
+    <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-0"></div>
+    {/* Spinner content */}
+    <div className="relative z-10 w-20 h-20 flex items-center justify-center">
       <svg
         className="absolute animate-spin w-20 h-20 text-orange-400"
         viewBox="0 0 50 50"

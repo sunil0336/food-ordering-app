@@ -7,7 +7,6 @@ import { FaShoppingCart } from 'react-icons/fa';
 function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const cartItems = useSelector((state) => state.cart.items);
-  // Use qty/quantity fallback for total items
   const totalItems = cartItems.reduce((total, item) => total + (item.qty || item.quantity || 1), 0);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
