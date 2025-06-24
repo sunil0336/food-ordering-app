@@ -1,8 +1,7 @@
 import React from "react";
 
 const Spinner = () => (
-  <div className="relative w-full h-screen flex items-center justify-center">
-    {/* Overlay for blur and dark */}
+  <div className="relative w-full flex items-center justify-center over" style={{ minHeight: 'calc(100vh - 68px)' }}>
     <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-0"></div>
     {/* Spinner content */}
     <div className="relative z-10 w-20 h-20 flex items-center justify-center">

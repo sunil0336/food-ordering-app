@@ -95,22 +95,6 @@ function Header() {
             <li>
               <NavLink to="/contact" className={activeLinkClass} onClick={() => setMenuOpen(false)}>Contact Us</NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/cart"
-                className={({ isActive }) =>
-                  `${activeLinkClass({ isActive })} relative flex items-center`
-                }
-                onClick={() => setMenuOpen(false)}
-              >
-                <FaShoppingCart className="text-xl" />
-                {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-1.5 py-0.5 text-xs font-bold shadow">
-                    {totalItems}
-                  </span>
-                )}
-              </NavLink>
-            </li>
             {isAuthenticated ? (
               <li>
                 <button
@@ -127,6 +111,22 @@ function Header() {
                 <NavLink to="/login" className={activeLinkClass} onClick={() => setMenuOpen(false)}>Login</NavLink>
               </li>
             )}
+            <li>
+              <NavLink
+                to="/cart"
+                className={({ isActive }) =>
+                  `${activeLinkClass({ isActive })} relative flex items-center`
+                }
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaShoppingCart className="text-xl" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full px-1.5 py-0.5 text-xs font-bold shadow">
+                    {totalItems}
+                  </span>
+                )}
+              </NavLink>
+            </li>
           </ul>
         </div>
       )}
